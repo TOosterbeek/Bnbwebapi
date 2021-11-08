@@ -5,7 +5,13 @@ const constructRouter = (Quote) => {
         Quote.findAll().then(quotes => {
             res.send(quotes);
         });
-    })
+    });
+
+    router.put('/quotes', function(req, res) {
+        Quote.create(req.body).then(quote => {
+            res.send('Created quote for ' + quote.user);
+        });
+    });
 
     return router;
 };

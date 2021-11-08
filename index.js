@@ -1,7 +1,6 @@
 require('dotenv').config();
 const express = require('express');
 const app = express();
-const fs = require('fs');
 
 const Sequelize = require('sequelize');
 const sequelize = new Sequelize(
@@ -26,7 +25,7 @@ const entities = {
 };
 
 sequelize.authenticate().then(() => {
-    console.log('Connected to the database sucessfully');
+    console.log('Connected to the database successfully');
 }).catch(err => {
     console.error(`Unable to connect to database: ${err}`);
 });
@@ -36,6 +35,8 @@ sequelize.sync().then(() => {
 }).catch(err => {
     console.error(`Unable to synchronise database: ${err}`);
 });
+
+app.use(express.json());
 
 // Register all routers
 loadEntityRouters(app, entities);
