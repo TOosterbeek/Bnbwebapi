@@ -1,3 +1,4 @@
+const {Sequelize} = require("sequelize");
 const router = require('express').Router();
 
 const constructRouter = (Quote) => {
@@ -6,6 +7,14 @@ const constructRouter = (Quote) => {
             res.send(quotes);
         });
     });
+
+    router.get('/quotes/random', function (req, res) {
+        Quote.findOne({
+            order: Sequelize.literal('rand()')
+        }).then(quote => {
+            res.send(quote);
+        })
+    })
 
     router.put('/quotes', function(req, res) {
         Quote.create(req.body).then(quote => {

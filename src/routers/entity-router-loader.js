@@ -9,7 +9,7 @@ const loadRouters = (app, entities) => {
 
             console.log(`Loaded router ${file}`);
         } catch (e) {
-            console.error(`Cannot load router ${file}: ${err}`);
+            console.error(`Cannot load router ${file}: ${e}`);
         }
     }
 };

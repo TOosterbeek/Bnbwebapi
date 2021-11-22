@@ -16,6 +16,10 @@ const attributes = {
     date: {
         type: Sequelize.STRING,
         allowNull: true,
+    },
+    guildId: {
+        type: Sequelize.TEXT,
+        allowNull: false,
     }
 };
 
